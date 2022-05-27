@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Elm WoodStudio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4c9ae5">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#4c9ae5">
+    <link rel="preload" href="/static/images/logo-white.svg" as="image" type="image/svg+xml">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Marck+Script&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&display=swap');
+
+      .fade-enter {
+        opacity: 0;
+      }
+      .fade-enter-active {
+        opacity: 1;
+        transition: opacity 300ms ease-in;
+      }
+      .fade-exit {
+        opacity: 1;
+      }
+      .fade-exit-active {
+        opacity: 0;
+        transition: opacity 300ms ease-in;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-BoldItalic.eot');
+        src: local('Gotham Pro Bold Italic'), local('GothamPro-BoldItalic'),
+        url('../static/fonts/GothamPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-BoldItalic.woff') format('woff'),
+        url('../static/fonts/GothamPro-BoldItalic.ttf') format('truetype');
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-Italic.eot');
+        src: local('Gotham Pro Italic'), local('GothamPro-Italic'),
+        url('../static/fonts/GothamPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-Italic.woff') format('woff'),
+        url('../static/fonts/GothamPro-Italic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-Medium.eot');
+        src: local('Gotham Pro Medium'), local('GothamPro-Medium'),
+        url('../static/fonts/GothamPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-Medium.woff') format('woff'),
+        url('../static/fonts/GothamPro-Medium.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-BlackItalic.eot');
+        src: local('Gotham Pro Black Italic'), local('GothamPro-BlackItalic'),
+        url('../static/fonts/GothamPro-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-BlackItalic.woff') format('woff'),
+        url('../static/fonts/GothamPro-BlackItalic.ttf') format('truetype');
+        font-weight: 900;
+        font-style: italic;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-Bold.eot');
+        src: local('Gotham Pro Bold'), local('GothamPro-Bold'),
+        url('../static/fonts/GothamPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-Bold.woff') format('woff'),
+        url('../static/fonts/GothamPro-Bold.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-LightItalic.eot');
+        src: local('Gotham Pro Light Italic'), local('GothamPro-LightItalic'),
+        url('../static/fonts/GothamPro-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-LightItalic.woff') format('woff'),
+        url('../static/fonts/GothamPro-LightItalic.ttf') format('truetype');
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-Light.eot');
+        src: local('Gotham Pro Light'), local('GothamPro-Light'),
+        url('../static/fonts/GothamPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-Light.woff') format('woff'),
+        url('../static/fonts/GothamPro-Light.ttf') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-Black.eot');
+        src: local('Gotham Pro Black'), local('GothamPro-Black'),
+        url('../static/fonts/GothamPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-Black.woff') format('woff'),
+        url('../static/fonts/GothamPro-Black.ttf') format('truetype');
+        font-weight: 900;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro.eot');
+        src: local('Gotham Pro'), local('GothamPro'),
+        url('../static/fonts/GothamPro.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro.woff') format('woff'),
+        url('../static/fonts/GothamPro.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Gotham Pro';
+        src: url('../static/fonts/GothamPro-MediumItalic.eot');
+        src: local('Gotham Pro Medium Italic'), local('GothamPro-MediumItalic'),
+        url('../static/fonts/GothamPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('../static/fonts/GothamPro-MediumItalic.woff') format('woff'),
+        url('../static/fonts/GothamPro-MediumItalic.ttf') format('truetype');
+        font-weight: 500;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- PRELOAD -->
+    <div id="popper-popup" aria-label="popup notification"></div>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+export { commonRoutes } from './routes';

@@ -1,0 +1,20 @@
+{
+  "extends": ["zalishchuk", "zalishchuk/flowtype"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "no-use-before-define": "off"
+//    "react-hooks/rules-of-hooks": "error",
+//    "react-hooks/exhaustive-deps": "warn"
+  },
+  "plugins": [
+//    "react-hooks"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
+    }
+  }
+}
